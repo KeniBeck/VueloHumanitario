@@ -1,16 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.code.vuelohumanitario.HelloController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.code.vuelohumanitario.HumanitaryController">
+   <children>
+      <ImageView fitHeight="115.0" fitWidth="120.0" layoutX="298.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Image/viajar.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="61.0" layoutY="209.0" text="Nombre Pasajero :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_nombrePasajero" layoutX="222.0" layoutY="200.0" prefHeight="36.0" prefWidth="254.0" />
+      <Label layoutX="87.0" layoutY="255.0" text="Edad Pasajero :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_edadPasajero" layoutX="222.0" layoutY="250.0" prefHeight="36.0" prefWidth="254.0" />
+      <Button fx:id="btn_RegistrarPasajero" layoutX="391.0" layoutY="293.0" mnemonicParsing="false" onAction="#OnRegistrarPasajero" prefHeight="36.0" prefWidth="85.0" text="Registrar" />
+      <Button fx:id="btn_limpiarRegistro" layoutX="283.0" layoutY="293.0" mnemonicParsing="false" onAction="#OnLimpiar" prefHeight="36.0" prefWidth="85.0" text="Nuevo" />
+      <ImageView fx:id="ImageBoys" fitHeight="104.0" fitWidth="109.0" layoutX="737.0" layoutY="31.0" onMouseClicked="#OnListaBoys" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Image/ninos.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImageJovenes" fitHeight="93.0" fitWidth="91.0" layoutX="749.0" layoutY="153.0" onMouseClicked="#OnListaJovenes" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Image/joven.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImageAncianos" fitHeight="115.0" fitWidth="115.0" layoutX="732.0" layoutY="275.0" onMouseClicked="#OnListaAncianos" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Image/ancianos.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="735.0" layoutY="122.0" text="Lista de niños">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="732.0" layoutY="242.0" text="Lista de jovenes">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="727.0" layoutY="393.0" text="Lista de ancianos">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="table_listaPasajeros" layoutX="938.0" layoutY="59.0" prefHeight="347.0" prefWidth="278.0">
+        <columns>
+          <TableColumn fx:id="ColName" prefWidth="139.0" text="Nombre del pasajero" />
+          <TableColumn fx:id="ColEdad" prefWidth="136.0" text="Edad del pasajero " />
+        </columns>
+      </TableView>
+      <Label layoutX="306.0" layoutY="157.0" text="Abordar">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="104.0" fitWidth="97.0" layoutX="307.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Image/bajar.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="294.0" layoutY="475.0" text="Desabordar">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="62.0" layoutY="544.0" text="Edad del pasajero:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_desabordarEdad" layoutX="229.0" layoutY="535.0" prefHeight="36.0" prefWidth="254.0" />
+      <Button fx:id="btn_bajar" layoutX="413.0" layoutY="597.0" mnemonicParsing="false" onAction="#OnBajarPersona" prefHeight="35.0" prefWidth="70.0" text="Bajar" />
+   </children>
+</Pane>
