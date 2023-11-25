@@ -93,20 +93,43 @@ public class HumanitaryController {
         try {
             int edadDesabordar = Integer.parseInt(txt_desabordarEdad.getText());
 
-            // Buscar el pasajero con la edad especificada en la tabla
-            Optional<cls_pasajero> pasajeroDesabordar = table_listaPasajeros.getItems().stream()
-                    .filter(pasajero -> pasajero.getEdad() == edadDesabordar)
-                    .findFirst();
+            Stack<cls_pasajero> pilaDesabordar = obtenerPilaSegunEdad(edadDesabordar);
 
-            if (pasajeroDesabordar.isPresent()) {
-                // Eliminar el pasajero de la tabla
-                table_listaPasajeros.getItems().remove(pasajeroDesabordar.get());
-                mostrarAlerta("Pasajero desabordado exitosamente.");
+            if (!pilaDesabordar.isEmpty()) {
+                cls_pasajero pasajeroDesabordar = pilaDesabordar.pop();
+
+                // Mostrar mensaje de desabordaje con categoría
+                mostrarAlerta("Pasajero a bajado del vagon de " + obtenerCategoria(edadDesabordar) + " con nombre "
+                        + pasajeroDesabordar.getNombre() + " desabordado exitosamente.");
             } else {
-                mostrarAlerta("No se encontró un pasajero con la edad especificada.");
+                mostrarAlerta("No hay pasajeros en la pila para desabordar con la edad especificada.");
             }
         } catch (NumberFormatException e) {
             mostrarAlerta("Por favor, ingresa una edad válida para desabordar.");
+        }
+
+        }
+
+        private String obtenerCategoria ( int edad){
+            if (edad >= 2 && edad <= 12) {
+                return "niños";
+            } else if (edad >= 15 && edad <= 25) {
+                return "jóvenes";
+            } else if (edad >= 60 && edad <= 80) {
+                return "ancianos";
+            } else {
+                return "categoría no determinada";
+            }
+        }
+    private Stack<cls_pasajero> obtenerPilaSegunEdad(int edad) {
+        if (edad >= 2 && edad <= 12) {
+            return colaNinos;
+        } else if (edad >= 15 && edad <= 25) {
+            return colaJovenes;
+        } else if (edad >= 60 && edad <= 80) {
+            return colaAncianos;
+        } else {
+            return new Stack<>(); // Devuelve una pila vacía si la edad no está en ninguno de los rangos especificados
         }
     }
     }
